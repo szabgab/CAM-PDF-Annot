@@ -1,6 +1,6 @@
 use File::Temp qw(tempdir);
-use Test::More tests => 9;
-BEGIN { use_ok('CAM::PDF::Annot') };
+use Test::More tests => 8;
+use CAM::PDF::Annot;
 
 my $dir = tempdir( CLEANUP => 1 );
 # testing for a single page doc
