@@ -1,0 +1,11 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/CAM-PDF-Annot.t
+t/pdf1.pdf
+t/pdf2.pdf
+t/pdf1multi.pdf
+t/pdf2multi.pdf
+lib/CAM/PDF/Annot.pm
+META.yml                                 Module meta-data (added by MakeMaker)
