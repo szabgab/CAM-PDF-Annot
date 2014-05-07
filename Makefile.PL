@@ -5,7 +5,10 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME              => 'CAM::PDF::Annot',
     VERSION_FROM      => 'lib/CAM/PDF/Annot.pm', # finds $VERSION
-    PREREQ_PM         => {}, # e.g., Module::Name => 1.1
+    PREREQ_PM => {
+        'Test::More' => 0,
+        'CAM::PDF'   => 0,
+    },
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (ABSTRACT_FROM  => 'lib/CAM/PDF/Annot.pm', # retrieve abstract from module
        AUTHOR         => 'DONATOAZ <donatoaz@gmail.com>') : ()),

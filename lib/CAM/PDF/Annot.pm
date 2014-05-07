@@ -54,12 +54,12 @@ Constructor method, same as C<CAM::PDF>.
 
 =cut
 
-sub new {
-	my $class = shift;
-    my $self = $class->SUPER::new( @_ );
-
-    bless $self, $class;
-}
+#sub new {
+#	my $class = shift;
+#    my $self = $class->SUPER::new( @_ );
+#
+#    bless $self, $class;
+#}
 
 =item $doc->appendAnnotation($page, $doc, $annotRef, $refKeys) *NEW*
 
