@@ -1,3 +1,6 @@
+use strict;
+use warnings;
+
 use File::Temp qw(tempdir);
 use Test::More tests => 8;
 use CAM::PDF::Annot;
@@ -5,11 +8,14 @@ use CAM::PDF::Annot;
 my $dir = tempdir( CLEANUP => 1 );
 # testing for a single page doc
 
-ok($pdf1 = CAM::PDF::Annot->new( 't/pdf1.pdf' ), 'Open PDF 1 test');
-ok($pdf2 = CAM::PDF::Annot->new( 't/pdf2.pdf' ), 'Open PDF 2 test');
+my $pdf1 = CAM::PDF::Annot->new( 't/pdf1.pdf' );
+ok($pdf1, 'Open PDF 1 test');
+my $pdf2 = CAM::PDF::Annot->new( 't/pdf2.pdf' );
+ok($pdf2, 'Open PDF 2 test');
 ok( &testAppend, 'Appending annot test'	);
 eval { $pdf2->cleanoutput( "$dir/merged_pdf.pdf" ) };
-ok($pdf3 = CAM::PDF::Annot->new( "$dir/merged_pdf.pdf" ), 'Opening merged file test');
+my $pdf3 = CAM::PDF::Annot->new( "$dir/merged_pdf.pdf" );
+ok($pdf3, 'Opening merged file test');
 
 # testing for multipage now
 
