@@ -1,21 +1,23 @@
+use File::Temp qw(tempdir);
 use Test::More tests => 9;
 BEGIN { use_ok('CAM::PDF::Annot') };
 
+my $dir = tempdir( CLEANUP => 1 );
 # testing for a single page doc
 
 ok($pdf1 = CAM::PDF::Annot->new( 't/pdf1.pdf' ), 'Open PDF 1 test');
 ok($pdf2 = CAM::PDF::Annot->new( 't/pdf2.pdf' ), 'Open PDF 2 test');
 ok( &testAppend, 'Appending annot test'	);
-eval { $pdf2->cleanoutput( 't/merged_pdf.pdf' ) };
-ok($pdf3 = CAM::PDF::Annot->new( 't/merged_pdf.pdf' ), 'Opening merged file test');
+eval { $pdf2->cleanoutput( "$dir/merged_pdf.pdf" ) };
+ok($pdf3 = CAM::PDF::Annot->new( "$dir/merged_pdf.pdf" ), 'Opening merged file test');
 
 # testing for multipage now
 
 ok($pdf1 = CAM::PDF::Annot->new( 't/pdf1multi.pdf' ), 'Open PDF 1 MULTIPAGE test');
 ok($pdf2 = CAM::PDF::Annot->new( 't/pdf2multi.pdf' ), 'Open PDF 2 MULTIPAGE test');
 ok( &testAppend, 'Appending MULTIPAGE annot test'	);
-eval { $pdf2->cleanoutput( 't/merged_multi_pdf.pdf' ) };
-ok($pdf3 = CAM::PDF::Annot->new( 't/merged_multi_pdf.pdf' ), 'Opening merged MULTIPAGE file test');
+eval { $pdf2->cleanoutput( "$dir/merged_multi_pdf.pdf" ) };
+ok($pdf3 = CAM::PDF::Annot->new( "$dir/merged_multi_pdf.pdf" ), 'Opening merged MULTIPAGE file test');
 
 undef $pdf1;
 undef $pdf2;
