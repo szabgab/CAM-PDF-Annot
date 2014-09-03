@@ -1,8 +1,10 @@
+use strict;
+use warnings;
 use 5.010000;
 use ExtUtils::MakeMaker;
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
-WriteMakefile(
+my %conf = (
     NAME              => 'CAM::PDF::Annot',
     VERSION_FROM      => 'lib/CAM/PDF/Annot.pm', # finds $VERSION
     PREREQ_PM => {
@@ -14,3 +16,23 @@ WriteMakefile(
        AUTHOR         => 'DONATOAZ <donatoaz@gmail.com>') : ()),
 	clean => {FILES => 't/merged_pdf.pdf t/merged_multi_pdf.pdf'},
 );
+
+if (eval { ExtUtils::MakeMaker->VERSION(6.3002) }) {
+	$conf{LICENSE} = 'perl';
+}
+
+if (eval { ExtUtils::MakeMaker->VERSION(6.46) }) {
+	$conf{META_MERGE} = {
+		'meta-spec' => { version => 2 },
+		resources => {
+			repository => {
+				type => 'git',
+				url  => 'https://github.com/szabgab/CAM-PDF-Annot.git',
+				web  => 'https://github.com/szabgab/CAM-PDF-Annot',
+			}
+		}
+	};
+}
+
+WriteMakefile(%conf);
+
