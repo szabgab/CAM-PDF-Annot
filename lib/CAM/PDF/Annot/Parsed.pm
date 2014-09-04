@@ -4,12 +4,7 @@ use 5.010000;
 use strict;
 use warnings;
 
-our $VERSION = '0.01';
-
-# Changelog
-# 0.01 Release
-
-# Preloaded methods go here.
+our $VERSION = '0.08';
 
 =head1 NAME
 
