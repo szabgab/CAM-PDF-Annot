@@ -25,7 +25,7 @@ sub parse {
 package main;
 my $pkg = 'CAM::PDF::Annot::Parsed';
 
-my $pdf = $pkg->new( 't\pdf-yaml-tiny.pdf', 'MyParser' );
+my $pdf = $pkg->new( 't/pdf-yaml-tiny.pdf', 'MyParser' );
 
 ok( $pdf, 'Constructor test' );
 
