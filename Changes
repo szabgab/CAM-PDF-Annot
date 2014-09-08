@@ -1,5 +1,8 @@
 Revision history for Perl extension CAM::PDF::Annot.
 
+0.08 2014.09.08
+    - Add YAML::Tiny to test requirements.
+
 0.08 2014.09.04
     - Add CAM::PDF::Annot::Parsed to this distribution.
 

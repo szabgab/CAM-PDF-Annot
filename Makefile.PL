@@ -8,7 +8,6 @@ my %conf = (
     NAME              => 'CAM::PDF::Annot',
     VERSION_FROM      => 'lib/CAM/PDF/Annot.pm', # finds $VERSION
     PREREQ_PM => {
-        'Test::More' => 0,
         'CAM::PDF'   => 0,
     },
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
@@ -32,6 +31,17 @@ if (eval { ExtUtils::MakeMaker->VERSION(6.46) }) {
 			}
 		}
 	};
+}
+
+my %test_requires = (
+    'Test::More' => 0,
+    'YAML::Tiny' => 0,
+);
+
+if (eval { ExtUtils::MakeMaker->VERSION(6.64) }) {
+	$conf{TEST_REQUIRES} = \%test_requires;
+} else {
+	%{ $conf{PREREQ_PM} } = (%{ $conf{PREREQ_PM} }, %test_requires);
 }
 
 WriteMakefile(%conf);
