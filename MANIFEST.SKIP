@@ -7,3 +7,4 @@ Makefile$
 ^.*\.tar\.gz$
 ^.git
 MYMETA.*
+MANIFEST.SKIP
