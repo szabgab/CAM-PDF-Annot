@@ -44,22 +44,22 @@ jobs:
         cpanm -v
         cpanm --installdeps --notest .
 
-    - name: Show Errors on Windows
-      if:  ${{ failure() && matrix.runner == 'windows-latest' }}
-      run: |
-         ls -l C:/Users/
-         ls -l C:/Users/RUNNER~1/
-         cat C:/Users/runneradmin/.cpanm/work/*/build.log
-
-    - name: Show Errors on Ubuntu
-      if:  ${{ failure() && startsWith( matrix.runner, 'ubuntu-')}}
-      run: |
-         cat /home/runner/.cpanm/work/*/build.log
-
-    - name: Show Errors on OSX
-      if:  ${{ failure() && startsWith( matrix.runner, 'macos-')}}
-      run: |
-         cat  /Users/runner/.cpanm/work/*/build.log
+#    - name: Show Errors on Windows
+#      if:  ${{ failure() && matrix.runner == 'windows-latest' }}
+#      run: |
+#         ls -l C:/Users/
+#         ls -l C:/Users/RUNNER~1/
+#         cat C:/Users/runneradmin/.cpanm/work/*/build.log
+#
+#    - name: Show Errors on Ubuntu
+#      if:  ${{ failure() && startsWith( matrix.runner, 'ubuntu-')}}
+#      run: |
+#         cat /home/runner/.cpanm/work/*/build.log
+#
+#    - name: Show Errors on OSX
+#      if:  ${{ failure() && startsWith( matrix.runner, 'macos-')}}
+#      run: |
+#         cat  /Users/runner/.cpanm/work/*/build.log
 
     - name: Run tests
       env:
